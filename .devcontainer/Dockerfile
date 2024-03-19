@@ -1,5 +1,9 @@
 FROM mcr.microsoft.com/devcontainers/typescript-node:18-bookworm
 
+RUN sed -i s@/archive.ubuntu.com/@/mirrors.aliyun.com/@g /etc/apt/sources.list
+RUN apt-get clean
+RUN apt-get update
+
 ADD install-vscode.sh /root/
 RUN /root/install-vscode.sh
 
